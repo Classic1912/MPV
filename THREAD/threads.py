@@ -35,7 +35,6 @@ class StatusMusica(QThread):
 
                 if diferenca > 1001 or diferenca < -1:
                     self.referencia.player.setPosition(self.referencia.horizontalSlider.sliderPosition())
-                    # self.valor_anterior.horizontal_slider = self.referencia.player.position()
                     time.sleep(0.1)
 
             # verifica se á ultima música foi finalizada
