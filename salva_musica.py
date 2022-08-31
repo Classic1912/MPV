@@ -10,14 +10,14 @@ class MusicasSalvas:
         self.criar_ini()
 
     def criar_ini(self):
-        if not (os.path.exists('teste.ini')):
-            with open('teste.ini', 'w') as escrevendo:
+        if not (os.path.exists('teste.PMlist')):
+            with open('teste.PMlist', 'w') as escrevendo:
                 for index in self.default_path:
                     escrevendo.write(index)
                 escrevendo.close()
 
     def lista_caminhos(self):
-        with open('teste.ini', 'r') as lendo_aquivo:
+        with open('teste.PMlist', 'r') as lendo_aquivo:
             lista_salva = lendo_aquivo.read().split(',')
         lendo_aquivo.close()
         if '' in lista_salva:
@@ -25,5 +25,5 @@ class MusicasSalvas:
         return lista_salva
 
     def salvar_lista(self, diretorio: str):
-        with open('teste.ini', 'a') as escrevendo:
+        with open('teste.PMlist', 'a') as escrevendo:
             escrevendo.write(',' + diretorio)
