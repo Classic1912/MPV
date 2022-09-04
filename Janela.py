@@ -20,24 +20,24 @@ from PySide6.QtWidgets import (QApplication, QLabel, QListWidget, QListWidgetIte
     QWidget)
 import imagens
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.setWindowModality(Qt.WindowModal)
-        MainWindow.resize(408, 456)
-        MainWindow.setMinimumSize(QSize(408, 456))
-        MainWindow.setMaximumSize(QSize(408, 456))
+class Ui_PlayerMusic(object):
+    def setupUi(self, PlayerMusic):
+        if not PlayerMusic.objectName():
+            PlayerMusic.setObjectName(u"PlayerMusic")
+        PlayerMusic.setWindowModality(Qt.WindowModal)
+        PlayerMusic.resize(408, 456)
+        PlayerMusic.setMinimumSize(QSize(408, 456))
+        PlayerMusic.setMaximumSize(QSize(408, 456))
         font = QFont()
         font.setStyleStrategy(QFont.PreferAntialias)
-        MainWindow.setFont(font)
+        PlayerMusic.setFont(font)
         icon = QIcon()
         icon.addFile(u":/BTT/icons/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.625 rgba(0, 8, 131, 200), stop:0.988636 rgba(109, 70, 151, 255));\n"
+        PlayerMusic.setWindowIcon(icon)
+        PlayerMusic.setStyleSheet(u"background-color: rgb(43, 25, 62);\n"
 "border-radius: 2px;")
-        MainWindow.setAnimated(True)
-        self.centralwidget = QWidget(MainWindow)
+        PlayerMusic.setAnimated(True)
+        self.centralwidget = QWidget(PlayerMusic)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setFont(font)
         self.centralwidget.setStyleSheet(u"border-radius: 5px;")
@@ -52,12 +52,10 @@ class Ui_MainWindow(object):
         font1.setStyleStrategy(QFont.PreferAntialias)
         self.listWidget.setFont(font1)
         self.listWidget.setStyleSheet(u"QListWidget {\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.244318 rgba(0, 15, 255, 55), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "	font: 700 italic 18pt \"Calibri\";\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "	color: rgb(32, 27, 44);\n"
 "	border-radius: 11px;\n"
-"	border: 1px solid rgb(170, 0, 0) ;\n"
-"	\n"
 "}\n"
 "QListWidget:pressed {\n"
 "	border-radius: 11px;\n"
@@ -69,6 +67,8 @@ class Ui_MainWindow(object):
 "}\n"
 "QScrollBar {\n"
 "	background-color: rgb(32, 27, 44);\n"
+"	\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "}")
         self.bt_anterior = QPushButton(self.centralwidget)
         self.bt_anterior.setObjectName(u"bt_anterior")
@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
 "	border: 1px solid;\n"
 "	border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.835227 rgba(255, 118, 118, 255), stop:0.988636 rgba(255, 220, 142, 255));\n"
 "	Icon: url(:/BTT/icons/retroceder - normal.png);\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));\n"
+"	background-color: qlineargradient(spread:reflect, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(43, 25, 62, 255), stop:1 rgba(255, 0, 208, 111));\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -102,7 +102,7 @@ class Ui_MainWindow(object):
 "	border: 1px solid;\n"
 "	border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.835227 rgba(255, 118, 118, 255), stop:0.988636 rgba(255, 220, 142, 255));\n"
 "	Icon: url(:/BTT/icons/reproduzir.png);\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));\n"
+"	background-color: qlineargradient(spread:reflect, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(43, 25, 62, 255), stop:1 rgba(255, 0, 208, 111));\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -112,6 +112,7 @@ class Ui_MainWindow(object):
 "	border-radius: 12px;\n"
 "	border: 1px solid ;\n"
 "	border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.835227 rgba(255, 0, 0, 164), stop:0.988636 rgba(255, 175, 0, 89));\n"
+"	icon: url(:/BTT/icons/reproduzir - press.png);\n"
 "}")
         self.bt_play.setText(u"")
         self.bt_play.setIconSize(QSize(30, 30))
@@ -127,7 +128,7 @@ class Ui_MainWindow(object):
 "	border: 1px solid;\n"
 "	border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.835227 rgba(255, 118, 118, 255), stop:0.988636 rgba(255, 220, 142, 255));\n"
 "	Icon: url(:/BTT/icons/avan - normal.png);\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));\n"
+"	background-color: qlineargradient(spread:reflect, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(43, 25, 62, 255), stop:1 rgba(255, 0, 208, 111));\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -171,7 +172,7 @@ class Ui_MainWindow(object):
 "	border: 1px solid;\n"
 "	border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.835227 rgba(255, 118, 118, 255), stop:0.988636 rgba(255, 220, 142, 255));\n"
 "	Icon: url(:/BTT/icons/excluir - normal.png);\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));\n"
+"	background-color: qlineargradient(spread:reflect, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(43, 25, 62, 255), stop:1 rgba(255, 0, 208, 111));\n"
 "}\n"
 "QPushButton:pressed {\n"
 "	bborder-radius: 6px;\n"
@@ -189,7 +190,7 @@ class Ui_MainWindow(object):
 "	border: 1px solid;\n"
 "	border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.835227 rgba(255, 118, 118, 255), stop:0.988636 rgba(255, 220, 142, 255));\n"
 "	Icon: url(:/BTT/icons/minimizar - normal.png);\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));\n"
+"	background-color: qlineargradient(spread:reflect, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(43, 25, 62, 255), stop:1 rgba(255, 0, 208, 111));\n"
 "}\n"
 "QPushButton:pressed {\n"
 "	border-radius: 6px;\n"
@@ -199,9 +200,11 @@ class Ui_MainWindow(object):
 "}")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(0, 0, 88, 16))
+        self.label.setGeometry(QRect(0, 440, 90, 16))
         self.label.setFont(font)
-        self.label.setStyleSheet(u"background-color: rgba(255, 170, 255, 130);")
+        self.label.setStyleSheet(u"background-color: rgba(255, 170, 255, 130);\n"
+"border: 1px solid;\n"
+"border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.835227 rgba(255, 118, 118, 255), stop:0.988636 rgba(255, 220, 142, 255));")
         self.label.setOpenExternalLinks(True)
         self.label.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.bt_diretorio = QPushButton(self.centralwidget)
@@ -235,26 +238,26 @@ class Ui_MainWindow(object):
         self.l_selec_pasta.setGeometry(QRect(260, 435, 124, 20))
         self.l_selec_pasta.setFont(font)
         self.l_selec_pasta.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));")
-        MainWindow.setCentralWidget(self.centralwidget)
+        PlayerMusic.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(PlayerMusic)
 
         self.bt_diretorio.setDefault(False)
 
 
-        QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(PlayerMusic)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+    def retranslateUi(self, PlayerMusic):
+        PlayerMusic.setWindowTitle(QCoreApplication.translate("PlayerMusic", u"Player Music", None))
         self.bt_anterior.setText("")
         self.bt_proximo.setText("")
         self.bt_sair.setText("")
         self.bt_minimizar.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Cr\u00e9ditos: <a href=\"https://icons8.com\"><span style=\" text-decoration: underline; color:#0000ff;\">Icons8</span></a></p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("PlayerMusic", u"<html><head/><body><p>Cr\u00e9ditos: <a href=\"https://icons8.com\"><span style=\" text-decoration: underline; color:#0000ff;\">Icons8</span></a></p></body></html>", None))
 #if QT_CONFIG(tooltip)
-        self.bt_diretorio.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; font-style:italic; color:#201b2c;\">Selecionar um Diret\u00f3rio</span></p></body></html>", None))
+        self.bt_diretorio.setToolTip(QCoreApplication.translate("PlayerMusic", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; font-style:italic; color:#201b2c;\">Selecionar um Diret\u00f3rio</span></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.l_selec_pasta.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:8pt; font-weight:700; font-style:italic; color:#201b2c;\">Selecione uma pasta -&gt;</span></p></body></html>", None))
+        self.l_selec_pasta.setText(QCoreApplication.translate("PlayerMusic", u"<html><head/><body><p><span style=\" font-size:8pt; font-weight:700; font-style:italic; color:#201b2c;\">Selecione uma pasta -&gt;</span></p></body></html>", None))
     # retranslateUi
 
