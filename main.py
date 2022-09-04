@@ -1,6 +1,5 @@
 # coding: utf-8
 # author: V
-# ver: 1.3
 import os
 import sys
 import time
