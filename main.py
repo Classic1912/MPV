@@ -12,10 +12,10 @@ import mod_stylesheet
 from PySide6.QtCore import QUrl, QPoint, Qt
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog
-from Janela import Ui_MainWindow
+from Janela import Ui_PlayerMusic
 
 
-class LogicaApp(QMainWindow, Ui_MainWindow):
+class LogicaApp(QMainWindow, Ui_PlayerMusic):
     def __init__(self):
         super(LogicaApp, self).__init__()
         # Variáveis utilizadas posteriormente
@@ -38,7 +38,7 @@ class LogicaApp(QMainWindow, Ui_MainWindow):
 
         self.lista_caminhos = salva_musica.MusicasSalvas()
         self.player_output.setVolume(1.0)
-        self.instancia_janela = Ui_MainWindow()
+        self.instancia_janela = Ui_PlayerMusic()
         self.setupUi(self)
 
         # desativando a 'moldura' da janela
