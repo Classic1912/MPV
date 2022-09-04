@@ -11,7 +11,7 @@ import mod_stylesheet
 from PySide6.QtCore import QUrl, QPoint, Qt
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog
-from Janela import Ui_PlayerMusic
+from JanelaPM import Ui_PlayerMusic
 
 
 class LogicaApp(QMainWindow, Ui_PlayerMusic):
