@@ -45,29 +45,30 @@ class Ui_PlayerMusic(object):
         self.listWidget.setObjectName(u"listWidget")
         self.listWidget.setGeometry(QRect(10, 25, 391, 371))
         font1 = QFont()
-        font1.setFamilies([u"Calibri"])
-        font1.setPointSize(18)
-        font1.setBold(True)
-        font1.setItalic(True)
+        font1.setFamilies([u"Ink Free"])
+        font1.setPointSize(17)
+        font1.setBold(False)
+        font1.setItalic(False)
         font1.setStyleStrategy(QFont.PreferAntialias)
         self.listWidget.setFont(font1)
         self.listWidget.setStyleSheet(u"QListWidget {\n"
-"	font: 700 italic 18pt \"Calibri\";\n"
+"	font: 17pt \"Ink Free\";\n"
 "	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "	color: rgb(32, 27, 44);\n"
 "	border-radius: 11px;\n"
 "}\n"
-"QListWidget:pressed {\n"
+"QListWidget:item:selected{\n"
+"	selection-color: rgb(255, 170, 255);\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "	border-radius: 11px;\n"
 "}\n"
-"QListWidget:item:selected{\n"
-"	color: rgb(32, 27, 44);\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));\n"
+"QListWidget:item:hover{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "	border-radius: 11px;\n"
 "}\n"
 "QScrollBar {\n"
 "	background-color: rgb(32, 27, 44);\n"
-"	\n"
 "	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "}")
         self.bt_anterior = QPushButton(self.centralwidget)
@@ -147,7 +148,7 @@ class Ui_PlayerMusic(object):
         self.horizontalSlider.setGeometry(QRect(59, 400, 291, 15))
         self.horizontalSlider.setFont(font)
         self.horizontalSlider.setStyleSheet(u"QSlider{\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.267045 rgba(0, 15, 255, 55), stop:0.994318 rgba(255, 0, 208, 111));\n"
+"	background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "	border-radius: 7px;\n"
 "}\n"
 "QSlider:handle {\n"
@@ -155,10 +156,10 @@ class Ui_PlayerMusic(object):
 "	border-radius: 5px;\n"
 "}\n"
 "QSlider:add-page {\n"
-"	background-color: rgba(81, 11, 163, 0.45);\n"
+"	alternate-background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:0, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "}\n"
 "QSlider:sub-page {\n"
-"	background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0.267045 rgba(0, 15, 255, 55), stop:0.994318 rgba(255, 0, 208, 111));\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));\n"
 "}")
         self.horizontalSlider.setValue(0)
         self.horizontalSlider.setSliderPosition(0)
@@ -237,7 +238,7 @@ class Ui_PlayerMusic(object):
         self.l_selec_pasta.setEnabled(True)
         self.l_selec_pasta.setGeometry(QRect(260, 435, 124, 20))
         self.l_selec_pasta.setFont(font)
-        self.l_selec_pasta.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.238636 rgba(0, 15, 255, 69), stop:0.994318 rgba(255, 0, 208, 82));")
+        self.l_selec_pasta.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.238636 rgba(43, 25, 62, 255), stop:0.994318 rgba(255, 0, 208, 111));")
         PlayerMusic.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(PlayerMusic)
@@ -258,6 +259,6 @@ class Ui_PlayerMusic(object):
 #if QT_CONFIG(tooltip)
         self.bt_diretorio.setToolTip(QCoreApplication.translate("PlayerMusic", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; font-style:italic; color:#201b2c;\">Selecionar um Diret\u00f3rio</span></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.l_selec_pasta.setText(QCoreApplication.translate("PlayerMusic", u"<html><head/><body><p><span style=\" font-size:8pt; font-weight:700; font-style:italic; color:#201b2c;\">Selecione uma pasta -&gt;</span></p></body></html>", None))
+        self.l_selec_pasta.setText(QCoreApplication.translate("PlayerMusic", u"<html><head/><body><p><span style=\" font-size:8pt; font-weight:700; font-style:italic; color:#ffffff;\">Selecione uma pasta -&gt;</span></p></body></html>", None))
     # retranslateUi
 

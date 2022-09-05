@@ -49,6 +49,7 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
         self.bt_diretorio.clicked.connect(self.salvar_caminhos)
         self.bt_sair.clicked.connect(self.sair_app)
         self.bt_minimizar.clicked.connect(self.minimizar)
+        self.listWidget.doubleClicked.connect(self.doble_click_musica)
         self.procurar_musicas()
 
     def minimizar(self):
@@ -128,6 +129,13 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
         if self.status_musica.isRunning():
             self.status_musica.terminate()
             self.status_musica.isRunning()
+
+    def doble_click_musica(self):
+        a = self.listWidget.currentItem().listWidget().currentRow()
+        self.listWidget.setCurrentRow(a)
+        self.estado_play = True
+        self.reset_config_bar()
+        self.play()
 
     def anterior(self):
         self.keys.terminate()
