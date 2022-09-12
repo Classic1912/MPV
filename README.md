@@ -1,7 +1,7 @@
-# Estudo-Pyside6---Reprodutor-de-Musica
+# Reprodutor de Música em Pyside6
 ***
 
->Aplicação tem a finalidade de reproduzir música, utilizando  thread,futuramente será feito a refatoração de código;
+>Aplicação tem a finalidade de reproduzir música, futuramente será feito a refatoração de código;
 
 >Compatível somente com windows x64
 ***
