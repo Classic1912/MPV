@@ -11,13 +11,14 @@ import mod_stylesheet
 from PySide6.QtCore import QUrl, QPoint, Qt
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog
-from JanelaPM import Ui_PlayerMusic
+from JanelaMPV import Ui_MusicPlayer
 
 
-class LogicaApp(QMainWindow, Ui_PlayerMusic):
+class LogicaApp(QMainWindow, Ui_MusicPlayer):
     def __init__(self):
         super(LogicaApp, self).__init__()
         # Variáveis utilizadas posteriormente
+        self.nome_pl_personalizadas = None
         self.evento_antigo = None
         self.evento = None
         self.dicionario = {}
@@ -35,9 +36,9 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
         # thread geral de funções do PM
         self.status_musica = threads.StatusMusica(self)
 
-        self.lista_caminhos = salva_musica.MusicasSalvas()
+        self.lista_caminhos = salva_musica.ProcurarSalvasMusicas()
         self.player_output.setVolume(1.0)
-        self.instancia_janela = Ui_PlayerMusic()
+        self.instancia_janela = Ui_MusicPlayer()
         self.setupUi(self)
 
         # desativando a 'moldura' da janela
@@ -50,6 +51,8 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
         self.bt_sair.clicked.connect(self.sair_app)
         self.bt_minimizar.clicked.connect(self.minimizar)
         self.listWidget.clicked.connect(self.doble_click_musica)
+        self.bt_salva_pl_personalizada.clicked.connect(self.salva_caminhos_pl_personalizada)
+        self.cb_lista_playlist.currentTextChanged.connect(self.procurar_musicas)
         self.procurar_musicas()
 
     def minimizar(self):
@@ -91,12 +94,20 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
         self.nome_musica = []
         self.caminhos_completo = []
 
+        self.nome_pl_personalizadas = \
+            self.lista_caminhos.procura_pl_personalizadas()
+        # se for maior que 0 existe uma pl personalizada
+        if len(self.nome_pl_personalizadas) > 0:
+            for nome in self.nome_pl_personalizadas:
+                # se o nome não existir é adicionado no ComboBox 
+                if self.cb_lista_playlist.findText(nome) == -1:
+                    self.cb_lista_playlist.addItem(f'{nome}')
+
         # Se o diretório for inválido é levantado uma exceção
         try:
-            for directory in self.lista_caminhos.lista_caminhos():
+            for directory in self.lista_caminhos.lista_caminhos(self.cb_lista_playlist.currentText()):
                 for arquivo in os.listdir(directory):
                     if arquivo.endswith('.mp3'):
-
                         # Guardando o nome da música
                         self.nome_musica.insert(-1, arquivo)
 
@@ -113,6 +124,14 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
         except FileNotFoundError:
             pass
 
+    # salva pl personalizada
+    def salva_caminhos_pl_personalizada(self):
+        caminho_selecionado = QFileDialog.getExistingDirectory(self)
+        if len(caminho_selecionado) != 0:
+            # se o retorno de a for igual a uma ‘string’ vazia o valor é zero
+            self.lista_caminhos.salva_lista_personalizada(caminho_selecionado)
+            self.procurar_musicas()
+
     # salva o caminho das músicas selecionada pelo usuário
     def salvar_caminhos(self):
         caminho_selecionado = QFileDialog.getExistingDirectory(self)
@@ -121,7 +140,7 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
             self.lista_caminhos.salvar_lista(caminho_selecionado)
             self.procurar_musicas()
 
-    # verifica se a Thread viva e a destrói
+    # verifica se a Thread esta viva e a destrói
     def destruir_thread(self):
         if self.keys.isRunning():
             self.keys.terminate()
@@ -130,6 +149,7 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
             self.status_musica.terminate()
             self.status_musica.isRunning()
 
+    # Reproduzir a música selecionada
     def doble_click_musica(self):
         self.player.stop()
         self.player.setSource(
@@ -186,6 +206,7 @@ class LogicaApp(QMainWindow, Ui_PlayerMusic):
 
             else:
                 self.l_selec_pasta.setVisible(False)
+                self.l_selec_pasta_personalizada.setVisible(False)
 
                 # caso seja a primeira música a tocar o if é executado
                 if not self.estado_pausado_anterior:
