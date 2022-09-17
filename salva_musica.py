@@ -28,22 +28,24 @@ class ProcurarSalvasMusicas:
         with open('playlist.MPVlist', 'a') as escrevendo:
             escrevendo.write(',' + diretorio)
 
-    def salva_lista_personalizada(self, diretorio):
+    def salva_lista_personalizada(self, diretorio_completo):
         '''
         suporte no máximo 5 playlist
         '''
 
         for count in range(1, 6):
+            # nome do diretório
+            nome_diretorio = diretorio_completo.split('/')[-1]
             # verificando se já existe pl anteriores
-            if not os.path.exists(f'{count} - playlist.MPVlist'):
-                with open(f'{count} - playlist.MPVlist', 'w') as lista_personalizada:
-                    lista_personalizada.write(',' + diretorio)
+            if not os.path.exists(fr'{nome_diretorio[-1]}.MPVlist'):
+                with open(f'{nome_diretorio}.MPVlist', 'w') as lista_personalizada:
+                    lista_personalizada.write(',' + diretorio_completo)
                     return
 
     def procura_pl_personalizadas(self) -> list:
         lista = []
-        for count in range(1, 6):
-            if os.path.exists(f'{count} - playlist.MPVlist'):
-                lista.append(f'{count} - playlist.MPVlist')
+        for nome_arq in os.listdir('./'):
+            if nome_arq.endswith('.MPVlist'):
+                lista.append(fr'{nome_arq}')
 
         return lista
