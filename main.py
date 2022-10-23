@@ -53,7 +53,14 @@ class LogicaApp(QMainWindow, Ui_MusicPlayer):
         self.listWidget.clicked.connect(self.doble_click_musica)
         self.bt_salva_pl_personalizada.clicked.connect(self.salva_caminhos_pl_personalizada)
         self.cb_lista_playlist.currentTextChanged.connect(self.procurar_musicas)
+        self.player.playbackStateChanged.connect(self.ultima_musica)
+        self.listWidget.setMovement(self.listWidget.Movement.Free)
+        self.listWidget.setDefaultDropAction(Qt.MoveAction)
         self.procurar_musicas()
+
+    def ultima_musica(self):
+        if self.player.mediaStatus() == self.player.EndOfMedia:
+            self.next()
 
     def minimizar(self):
         self.showMinimized()

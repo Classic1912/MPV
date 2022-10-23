@@ -1,6 +1,5 @@
 # coding: utf-8
 # author: V
-# ver: 1.3
 from PySide6.QtCore import QThread
 from pynput import keyboard
 import time
@@ -37,10 +36,6 @@ class StatusMusica(QThread):
                     self.referencia.player.setPosition(self.referencia.horizontalSlider.sliderPosition())
                     time.sleep(0.1)
 
-            # verifica se á ultima música foi finalizada
-            if self.referencia.player.mediaStatus() == self.referencia.player.EndOfMedia:
-                self.referencia.next()
-
 
 class Volume(QThread):
     def __init__(self, tela):
@@ -54,7 +49,7 @@ class Volume(QThread):
 
     def key_pressed(self, key):
         if key == keyboard.KeyCode(char='+'):
-            self.referencia.player_output.setVolume(self.referencia.player_output.volume() + 0.05)
+            self.referencia.player_output.setVolume(self.referencia.player_output.volume() + 0.005)
 
         if key == keyboard.KeyCode(char='-'):
-            self.referencia.player_output.setVolume(self.referencia.player_output.volume() - 0.05)
+            self.referencia.player_output.setVolume(self.referencia.player_output.volume() - 0.005)
