@@ -49,7 +49,7 @@ class LogicaApp(QMainWindow, Ui_MusicPlayer):
         self.bt_proximo.clicked.connect(self.next)
         self.bt_diretorio.clicked.connect(self.salvar_caminhos)
         self.bt_sair.clicked.connect(self.sair_app)
-        self.bt_minimizar.clicked.connect(self.minimizar)
+        self.bt_minimizar.clicked.connect(lambda: self.showMinimized())
         self.listWidget.clicked.connect(self.doble_click_musica)
         self.bt_salva_pl_personalizada.clicked.connect(self.salva_caminhos_pl_personalizada)
         self.cb_lista_playlist.currentTextChanged.connect(self.procurar_musicas)
@@ -61,9 +61,6 @@ class LogicaApp(QMainWindow, Ui_MusicPlayer):
     def ultima_musica(self):
         if self.player.mediaStatus() == self.player.EndOfMedia:
             self.next()
-
-    def minimizar(self):
-        self.showMinimized()
 
     def sair_app(self):
         self.destruir_thread()
@@ -121,7 +118,6 @@ class LogicaApp(QMainWindow, Ui_MusicPlayer):
                         self.caminhos_completo.insert(0, os.path.join(directory, arquivo))
                         self.dicionario.update({arquivo: self.caminhos_completo[0]})
 
-            self.caminhos_completo.sort()
             self.nome_musica.sort()
             indices = 0
             for _ in self.caminhos_completo:

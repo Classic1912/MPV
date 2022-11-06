@@ -48,8 +48,11 @@ class Volume(QThread):
             listener.join()
 
     def key_pressed(self, key):
-        if key == keyboard.KeyCode(char='+'):
-            self.referencia.player_output.setVolume(self.referencia.player_output.volume() + 0.005)
+        if not self.referencia.estado_play:
+            if key == keyboard.KeyCode(char='+'):
+                self.referencia.player_output.setVolume(self.referencia.player_output.volume() + 0.005)
 
-        if key == keyboard.KeyCode(char='-'):
-            self.referencia.player_output.setVolume(self.referencia.player_output.volume() - 0.005)
+            if key == keyboard.KeyCode(char='-'):
+                self.referencia.player_output.setVolume(self.referencia.player_output.volume() - 0.005)
+        else:
+            return False
