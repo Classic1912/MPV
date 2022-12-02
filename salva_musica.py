@@ -18,9 +18,9 @@ class ProcurarSalvasMusicas:
 
     def lista_caminhos(self, lista_padrao: str = 'playlist.MPVlist') -> list:
         """
-        :param lista_padrao: arquivo .MPVlist que contem o(s) caminho(s) absoluto(s) do(s) arquivo(s) '.mp3'.
+        :param lista_padrao: arquivo .MPVlist que contem os caminhos absolutos dos arquivos '.mp3'.
         :type lista_padrao: str.
-        :return: caminho(s) dos arquivos '.mp3'.
+        :return: caminhos dos arquivos '.mp3'.
         """
 
         with open(f'{lista_padrao}', 'r') as lendo_aquivo:
@@ -32,9 +32,9 @@ class ProcurarSalvasMusicas:
 
     def salvar_lista(self, diretorio: str) -> None:
         """
-        Salva o(s) caminho(s) absoluto(s) do(s) arquivo(s) '.mp3' na pl padrão.
+        Salva os caminhos absolutos dos arquivos '.mp3' na pl padrão.
 
-        :param diretorio: caminho(s) absoluto a ser salvo na pl padrão.
+        :param diretorio: caminhos absolutos a ser salvo na pl padrão.
         :type diretorio: str.
         :return: None
         """
@@ -44,9 +44,9 @@ class ProcurarSalvasMusicas:
 
     def salva_lista_personalizada(self, diretorio_completo: str) -> None:
         """
-        Salva o(s) caminho(s) absoluto(s) do(s) arquivo(s) '.mp3' na pl personalizada.
+        Salva os caminhos absolutos dos arquivos '.mp3' na pl personalizada.
 
-        :param diretorio_completo: caminho(s) absoluto(s) a ser salvo na pl personalizada.
+        :param diretorio_completo: caminhos absolutos a ser salvo na pl personalizada.
         :return: None
         """
 
